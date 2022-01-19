@@ -48,7 +48,6 @@ public:
             throw ObserverUnknownToSubject();
         } else {
             Observer<T>* to_remove = &o;
-
             for (int i=0; i< observers.size(); i++) {
                 if (to_remove == observers[i]) {
                    observers.erase(observers.begin()+i);
