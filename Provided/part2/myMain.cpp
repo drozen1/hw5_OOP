@@ -18,6 +18,22 @@ int main(){
     constexpr List<Int<1>, Int<2>, Int<3>> l2;
     static_assert(l2.size == 3, "fail");
 
+
+    typedef List<Int<1>, Int<2>, Int<3>> list;
+//    GetAtIndex<0, list>::value; // = Int<1>
+//    GetAtIndex<2, list>::value; // = Int<3>
+
+
+    typedef List<Int<1>, Int<2>, Int<3>> list;
+    typedef typename SetAtIndex<0, Int<5>, list>::list listA; // = List<Int<5>,Int<2>, Int<3>>
+    listA::head a;
+
+    typedef typename SetAtIndex<2, Int<7>, list>::list listB; // = List<Int<1>,Int<2>, Int<7>>
+    listB::head b;
+
+    typedef typename SetAtIndex<1, Int<111>, list>::list listC; // = List<Int<1>,Int<2>, Int<7>>
+    listC::head c;
+
     return 0;
 }
 

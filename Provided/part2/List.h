@@ -9,6 +9,11 @@
 template<typename ... TT>
 struct List;
 
+template<>
+struct List<> {
+    constexpr static int size = 0; //constexpr static ?
+};
+
 template<typename T, typename ...TT>
 struct List<T, TT...> {
     constexpr static int size = 1 + sizeof...(TT); //constexpr static ?
@@ -16,10 +21,47 @@ struct List<T, TT...> {
     typedef List<TT...> next;
 };
 
-template<>
-struct List<> {
-    constexpr static int size = 0; //constexpr static ?
+template<typename X, typename ...TT>
+struct PrependList;
+
+template<typename X , typename ...TT>
+struct PrependList<X , List<TT...>> {
+    typedef List<X, TT...> list;
 };
+
+
+template<int N, typename T>
+struct GetAtIndex {};
+
+template<int N, typename T, typename... TT >
+struct GetAtIndex<N, List<T, TT... > > {
+typedef typename GetAtIndex<N-1, List<TT... >>::value
+        value;
+};
+
+template<typename T, typename... TT>
+struct GetAtIndex<0, List<T, TT... > > {
+typedef T value;
+};
+
+template<int N, typename X, typename T>
+struct SetAtIndex {};
+
+template<int N, typename X, typename T, typename... TT >
+struct SetAtIndex<N, X, List<T, TT...>> {
+    typedef typename PrependList<T,typename SetAtIndex<N-1, X, List<TT... >>::list> ::list
+    list;
+};
+
+template<typename T, typename X, typename... TT>
+struct SetAtIndex<0, X, List<T, TT... > > {
+    typedef List<X,TT...> list;
+};
+
+
+
+
+
 
 
 
