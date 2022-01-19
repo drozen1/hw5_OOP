@@ -10,4 +10,13 @@ include_directories(Provided/part2)
 add_executable(hw5_OOP
         Provided/part1/OOP5EventException.h
         Provided/part1/Part1Examples.cpp
-        Provided/part1/Subject.h Provided/part1/Observer.h)
+        Provided/part1/Subject.h Provided/part1/Observer.h
+        Provided/part1/Subject.h Provided/part1/tests/Part2Main.h
+        Provided/part1/Subject.h Provided/part1/tests/staff/Part2Examples.h
+        Provided/part1/Subject.h Provided/part1/tests/partner/BaseTestFile.h
+        Provided/part1/Subject.h Provided/part1/tests/partner/PartnerPartTwoMain.h
+        Provided/part1/Subject.h Provided/part1/tests/partner/PartTwoObserverTests.h
+        Provided/part1/Subject.h Provided/part1/tests/partner/PartTwoSubjectTests.h
+        Provided/part1/Subject.h Provided/part1/tests/my/MyTest.h
+        Provided/part1/Subject.h Provided/part1/tests/my/TestUtils.h
+        )

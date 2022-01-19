@@ -11,6 +11,8 @@
 #include<vector>
 #include<algorithm>
 #include "OOP5EventException.h"
+
+
 using namespace std;
 
 template <typename T>
@@ -45,7 +47,14 @@ public:
         if (!this->contains(o)) {
             throw ObserverUnknownToSubject();
         } else {
-            std::remove(observers.begin(), observers.end(), &o);
+            Observer<T>* to_remove = &o;
+
+            for (int i=0; i< observers.size(); i++) {
+                if (to_remove == observers[i]) {
+                   observers.erase(observers.begin()+i);
+                    return;
+                }
+            }
         }
     }
 
