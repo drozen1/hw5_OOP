@@ -19,4 +19,4 @@ add_executable(hw5_OOP
 #        Provided/part1/Subject.h Provided/part1/tests/partner/PartTwoSubjectTests.h
 #        Provided/part1/Subject.h Provided/part1/tests/my/MyTest.h
 #        Provided/part1/Subject.h Provided/part1/tests/my/TestUtils.h
-        Provided/part2/List.h Provided/part2/myMain.cpp)
+        Provided/part2/List.h Provided/part2/myMain.cpp Provided/part2/Utilities.h)

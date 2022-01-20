@@ -11,12 +11,12 @@ struct List;
 
 template<>
 struct List<> {
-    constexpr static int size = 0; //constexpr static ?
+    constexpr static int size = 0;
 };
 
 template<typename T, typename ...TT>
 struct List<T, TT...> {
-    constexpr static int size = 1 + sizeof...(TT); //constexpr static ?
+    constexpr static int size = 1 + sizeof...(TT);
     typedef T head;
     typedef List<TT...> next;
 };
