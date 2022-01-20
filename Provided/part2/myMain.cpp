@@ -2,6 +2,10 @@
 
 #include "List.h"
 #include "Utilities.h"
+#include "CellType.h"
+#include "MoveVehicle.h"
+#include "GameBoard.h"
+#include "Direction.h"
 
 template<int n>
 class Int {
@@ -51,6 +55,12 @@ int main(){
         int x = 4;
         x++;
     }
+
+    //int amount = Move<EMPTY, UP, 1>::amount;
+
+    int amount1 = Move<X, RIGHT, 1>::amount;
+
+
 
     return 0;
 }
