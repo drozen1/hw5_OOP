@@ -10,8 +10,8 @@
 template<typename list>
 struct GameBoard{
     typedef list board;
-    typedef typename board::head::size width;//columns
-    typedef typename board::size length; //rows
+    constexpr static int width = board::head::size;
+    constexpr static int length = board::size;
 };
 
 #endif //HW5_OOP_GAMEBOARD_H

@@ -6,6 +6,7 @@
 #define HW5_OOP_MOVEVEHICLE_H
 #include "CellType.h"
 #include "Direction.h"
+#include "GameBoard.h"
 
 template <CellType C, Direction D, int A>
 struct Move{
@@ -15,9 +16,15 @@ struct Move{
     static_assert(EMPTY != C, "Compilation error");
 };
 
-//template <Direction D, int A>
-//struct Move<EMPTY, D, A>{
-//    static_assert(0 == 1, "Compilation error");
-//};
+template<typename G, int R, int C, Direction D, int A>
+struct MoveVehicle{
+    static_assert(G::length > R, "Compilation error");
+    static_assert(R >= 0 , "Compilation error");
+    static_assert(G::width > C , "Compilation error");
+    static_assert(C >= 0 , "Compilation error");
+    static_assert(GetAtIndex<C, typename GetAtIndex<R,typename G::board>::value>::value::type != EMPTY, "Compilation error");
+
+    typedef G board;
+};
 
 #endif //HW5_OOP_MOVEVEHICLE_H

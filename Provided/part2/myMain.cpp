@@ -60,6 +60,16 @@ int main(){
 
     int amount1 = Move<X, RIGHT, 1>::amount;
 
+    typedef GameBoard<List< List< BoardCell<EMPTY, UP, 0>, BoardCell<EMPTY, UP, 0>>,
+            List< BoardCell<X, RIGHT, 1>, BoardCell<A, UP, 1>>,
+            List< BoardCell<EMPTY, UP, 0>, BoardCell<EMPTY, UP, 0>>>> gameBoard;
+
+    int l = gameBoard::length;
+    int w = gameBoard::width;
+
+    typedef List<Move<A, UP, 1>> moves;
+
+    MoveVehicle<gameBoard, 1, 0, UP, 3>::board ;
 
 
     return 0;
