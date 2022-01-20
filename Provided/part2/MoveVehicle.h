@@ -49,16 +49,34 @@ struct Coordinate{
     constexpr static int column = Y;
 };
 
-template<int R, int C, Direction D, CellType T, int W, typename G>
+template<int R, int C, Direction D, CellType GivenType, CellType ActualType, int W, typename G>
 struct LastLocation;
 
-template<int R, int C, CellType T, int W, typename G>
-struct LastLocation<R, C, RIGHT, T,W, G>{
-    constexpr static CellType actualType =  GetAtIndex<C, typename GetAtIndex<R,typename G::board>::value>::value::type;
-    typedef LastLocation<R, C+1 , RIGHT, T,W, G> continueSearching  ;
-    typedef typename Conditional<(actualType == T), typename continueSearching::result, Coordinate<R,C-1> >::value result;
-
+template<int R, int C, CellType GivenType, CellType ActualType, int W, typename G>
+struct LastLocation<R, C, RIGHT, GivenType, ActualType, W, G>{
+    typedef Coordinate<R,C-1> value;
 };
+
+template<int R, int C, CellType GivenType, int W, typename G>
+struct LastLocation<R, C, RIGHT, GivenType, GivenType, W, G>{
+    constexpr static CellType nextType =  GetAtIndex<C+1, typename GetAtIndex<R,typename G::board>::value>::value::type;
+    typedef typename LastLocation<R, C+1 , RIGHT, GivenType, nextType ,W, G>::value
+            value;
+};
+
+template<int R, int C, CellType GivenType, CellType ActualType, int W, typename G>
+struct LastLocation<R, C, LEFT, GivenType, ActualType, W, G>{
+    typedef Coordinate<R,C+1> value;
+};
+
+template<int R, int C, CellType GivenType, int W, typename G>
+struct LastLocation<R, C, LEFT, GivenType, GivenType, W, G>{
+    constexpr static CellType nextType =  GetAtIndex<C-1, typename GetAtIndex<R,typename G::board>::value>::value::type;
+    typedef typename LastLocation<R, C-1 , RIGHT, GivenType, nextType ,W, G>::value
+            value;
+};
+
+
 
 
 
