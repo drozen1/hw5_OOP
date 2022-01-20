@@ -69,8 +69,11 @@ int main(){
 
     typedef List<Move<A, UP, 1>> moves;
 
-    MoveVehicle<gameBoard, 1, 0, UP, 3>::board ;
+    MoveVehicle<gameBoard, 1, 0, RIGHT, 3>::board ;
 
+    typedef GameBoard<List< List< BoardCell<X, RIGHT, 2>, BoardCell<X, RIGHT, 2>>>> testBoard;
+
+    LastLocation<0, 0, RIGHT, X ,2, testBoard>::row;
 
     return 0;
 }
