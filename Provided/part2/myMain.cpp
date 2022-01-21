@@ -91,13 +91,23 @@ int main(){
 
 
     typedef GameBoard<List< List<
-            BoardCell<EMPTY, RIGHT, 1>,BoardCell<X, RIGHT, 1>,BoardCell<X, RIGHT, 1>,BoardCell<EMPTY, RIGHT, 1>,BoardCell<EMPTY, RIGHT, 1>,BoardCell<B, RIGHT, 1>
+            BoardCell<EMPTY, RIGHT, 1>,BoardCell<X, RIGHT, 2>,BoardCell<X, RIGHT, 2>,BoardCell<EMPTY, RIGHT, 1>,BoardCell<EMPTY, RIGHT, 1>,BoardCell<C, RIGHT, 1>
     >>> gameBoard6;
 
-    constexpr static int mostleftX = CheckWin<gameBoard6>::columnMostRight;
-    constexpr static int cnt = CheckWin<gameBoard6>::counter;
+    typedef List<Move<X, LEFT, 1>,
+                 Move<X, RIGHT, 1>,
+                 Move<X, LEFT, 1>> moves;
 
-    constexpr static bool RES = CheckWin<gameBoard5>::result;
+    constexpr static bool result11 = CheckSolution<gameBoard6,moves>::result ;
+
+
+   // Printer<boradAfterOneMove>::print(std::cout);
+
+
+//    constexpr static int mostleftX = CheckWin<gameBoard6>::columnMostRight;
+//    constexpr static int cnt = CheckWin<gameBoard6>::counter;
+//
+//    constexpr static bool RES = CheckWin<gameBoard5>::result;
 
 
 // GetAtIndex<1, List<BoardCell<EMPTY, UP, 0>
@@ -110,7 +120,7 @@ int main(){
     int l = gameBoard::length;
     int w = gameBoard::width;
 
-    typedef List<Move<A, UP, 1>> moves;
+
 
     //MoveVehicle<gameBoard, 1, 0, RIGHT, 3>::board ;
 
@@ -148,6 +158,17 @@ int main(){
 //    int rr = LastLocation<0, 4, LEFT, X ,X , 5, testBoard2>::value::row;
 //
 //    int counter =  CountEmptyCells<0,3, LEFT, X ,X, 7, testBoard2, 0>::value;
+
+    typedef GameBoard<List< List< BoardCell<EMPTY, UP, 0>, BoardCell<EMPTY, UP, 0>>,
+            List< BoardCell<X, RIGHT, 1>, BoardCell<A, UP, 1>>,
+            List< BoardCell<EMPTY, UP, 0>, BoardCell<EMPTY, UP, 0>>>> gameBoard11;
+    typedef List<Move<A, DOWN, 1>> moves11;
+    typedef CheckSolution<gameBoard11, moves11> gameState;
+    static_assert(gameState::result, "Fail!");
+
+    int z = 2;
+
+
 
     return 0;
 }

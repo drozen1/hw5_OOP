@@ -8,7 +8,7 @@ template<int R, int C, typename G, Direction D, CellType Type, int CarSize>
 struct OneMove;
 
 template<int R, int C, typename G,CellType Type, int CarSize>
-struct OneMove<R,C,G,RIGHT, Type, CarSize>{
+struct OneMove<R,C,G,RIGHT, Type, CarSize> {
     typedef BoardCell<EMPTY, RIGHT, 0 > newEmptyCell;
     typedef BoardCell<Type, RIGHT, CarSize > newCopyCell;
 
