@@ -69,20 +69,24 @@ int main(){
 
 
     typedef GameBoard<List< List<
-            BoardCell<X, RIGHT, 4>,
-            BoardCell<X, RIGHT, 4>,
-            BoardCell<X, RIGHT, 4>,
             BoardCell<EMPTY, RIGHT, 1>,
             BoardCell<EMPTY, RIGHT, 1>,
+            BoardCell<EMPTY, RIGHT, 1>,
+            BoardCell<X, RIGHT, 4>,
+            BoardCell<X, RIGHT, 4>,
+            BoardCell<X, RIGHT, 4>,
             BoardCell<A, RIGHT, 1>
             >>> testBoard2;
 
+    typedef typename MakeMove<0,3,testBoard2,LEFT, 3, X, 3>::boardResult toPrint2;
+    Printer<toPrint2>::print(std::cout);
 
-
-    typedef GameBoard<List< List< BoardCell<B, UP, 0>, BoardCell<A, UP, 0>>,
+    typedef GameBoard<List< List< BoardCell<B, UP, 0>, BoardCell<EMPTY, UP, 0>>,
             List< BoardCell<X, UP, 1>, BoardCell<A, UP, 1>>,
     List< BoardCell<EMPTY, UP, 0>, BoardCell<EMPTY, UP, 0>>>> gameBoard2;
 
+    typedef typename OneMove<0,0,gameBoard2,RIGHT,B, 1>::newBoard toPrint;
+    Printer<toPrint>::print(std::cout);
     //MoveVehicle<gameBoard2, 1, 1, DOWN, 1>::board ;
 
     Printer<gameBoard2>::print(std::cout);
