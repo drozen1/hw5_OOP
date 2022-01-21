@@ -8,6 +8,7 @@
 #include "Direction.h"
 #include "GameBoard.h"
 #include "Utilities.h"
+#include "LastLocation.h"
 
 template <CellType C, Direction D, int A>
 struct Move{
@@ -40,54 +41,9 @@ struct MoveVehicle{
     //Check if we have another car
     //call with W-1
 
+
     typedef G board;
 };
-
-template<int X, int Y>
-struct Coordinate{
-    constexpr static int row = X;
-    constexpr static int column = Y;
-};
-
-template<int R, int C, Direction D, CellType GivenType, CellType ActualType, int W, typename G>
-struct LastLocation;
-
-template<int R, int C, CellType GivenType, CellType ActualType, int W, typename G>
-struct LastLocation<R, C, RIGHT, GivenType, ActualType, W, G>{
-    typedef Coordinate<R,C-1> value;
-};
-
-template<int R, int C, CellType GivenType, int W, typename G>
-struct LastLocation<R, C, RIGHT, GivenType, GivenType, W, G>{
-    constexpr static CellType nextType =  GetAtIndex<C+1, typename GetAtIndex<R,typename G::board>::value>::value::type;
-    typedef typename LastLocation<R, C+1 , RIGHT, GivenType, nextType ,W, G>::value
-            value;
-};
-
-template<int R, CellType GivenType, int W, typename G>
-struct LastLocation<R, W, RIGHT, GivenType, GivenType, W, G>{
-    typedef Coordinate<R,W> value;
-};
-
-template<int R, int C, CellType GivenType, CellType ActualType, int W, typename G>
-struct LastLocation<R, C, LEFT, GivenType, ActualType, W, G>{
-    typedef Coordinate<R,C+1> value;
-};
-
-template<int R, int C, CellType GivenType, int W, typename G>
-struct LastLocation<R, C, LEFT, GivenType, GivenType, W, G>{
-    constexpr static CellType nextType =  GetAtIndex<C-1, typename GetAtIndex<R,typename G::board>::value>::value::type;
-    typedef typename LastLocation<R, C-1 , LEFT, GivenType, nextType ,W, G>::value
-            value;
-};
-
-template<int R, CellType GivenType, int W, typename G>
-struct LastLocation<R, 0, LEFT, GivenType, GivenType, W, G>{
-    typedef Coordinate<R,0> value;
-};
-
-
-
 
 
 #endif //HW5_OOP_MOVEVEHICLE_H

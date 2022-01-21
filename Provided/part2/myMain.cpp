@@ -6,6 +6,7 @@
 #include "MoveVehicle.h"
 #include "GameBoard.h"
 #include "Direction.h"
+#include "CountEmptyCells.h"
 
 template<int n>
 class Int {
@@ -73,16 +74,20 @@ int main(){
 
 
     typedef GameBoard<List< List<
+            BoardCell<A, RIGHT, 1>,
             BoardCell<EMPTY, RIGHT, 1>,
+            BoardCell<EMPTY, RIGHT, 4>,
             BoardCell<X, RIGHT, 4>,
             BoardCell<X, RIGHT, 4>,
             BoardCell<X, RIGHT, 4>,
-            BoardCell<X, RIGHT, 4>,
-            BoardCell<EMPTY, RIGHT, 1>
+            BoardCell<EMPTY, RIGHT, 1>,
+            BoardCell<A, RIGHT, 1>
             >>> testBoard2;
 
     int cc  = LastLocation<0, 4, LEFT, X ,X , 5, testBoard2>::value::column;
     int rr = LastLocation<0, 4, LEFT, X ,X , 5, testBoard2>::value::row;
+
+    int counter =  CountEmptyCells<0,3, LEFT, X ,X, 7, testBoard2, 0>::value;
 
     return 0;
 }
