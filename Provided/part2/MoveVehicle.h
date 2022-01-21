@@ -11,6 +11,7 @@
 #include "LastLocation.h"
 #include "CountEmptyCells.h"
 #include "TransposeList.h"
+#include "MakeMove.h"
 
 template <CellType C, Direction D, int A>
 struct Move{
@@ -47,6 +48,7 @@ struct MoveVehicle<G,R,C,RIGHT, A>{
     static_assert(A <= counter, "Compilation error");
 
     //Move the car
+
 
     typedef G board;
 };
