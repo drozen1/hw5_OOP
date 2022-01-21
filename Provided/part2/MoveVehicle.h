@@ -9,6 +9,7 @@
 #include "GameBoard.h"
 #include "Utilities.h"
 #include "LastLocation.h"
+#include "CountEmptyCells.h"
 
 template <CellType C, Direction D, int A>
 struct Move{
@@ -40,7 +41,11 @@ struct MoveVehicle{
 
     //Check if we have another car
     //call with W-1
+    constexpr static int lastColumn  = LastLocation<R, C, D, type ,type , G::width-1, G>::value::column;
+    constexpr static int counter =  CountEmptyCells<R ,lastColumn, D, type ,type, G::width-1, G, 0>::value;
+    static_assert(A <= counter, "Compilation error");
 
+    //Move the car
 
     typedef G board;
 };

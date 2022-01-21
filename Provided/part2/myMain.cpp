@@ -74,15 +74,15 @@ int main(){
 
 
     typedef GameBoard<List< List<
-            BoardCell<A, RIGHT, 1>,
+            BoardCell<X, RIGHT, 4>,
+            BoardCell<X, RIGHT, 4>,
+            BoardCell<X, RIGHT, 4>,
             BoardCell<EMPTY, RIGHT, 1>,
-            BoardCell<EMPTY, RIGHT, 4>,
-            BoardCell<X, RIGHT, 4>,
-            BoardCell<X, RIGHT, 4>,
-            BoardCell<X, RIGHT, 4>,
             BoardCell<EMPTY, RIGHT, 1>,
             BoardCell<A, RIGHT, 1>
             >>> testBoard2;
+
+    MoveVehicle<testBoard2, 0, 0, RIGHT, 2>::board ;
 
     int cc  = LastLocation<0, 4, LEFT, X ,X , 5, testBoard2>::value::column;
     int rr = LastLocation<0, 4, LEFT, X ,X , 5, testBoard2>::value::row;
