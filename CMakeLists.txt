@@ -19,4 +19,4 @@ add_executable(hw5_OOP
 #        Provided/part1/Subject.h Provided/part1/tests/partner/PartTwoSubjectTests.h
 #        Provided/part1/Subject.h Provided/part1/tests/my/MyTest.h
 #        Provided/part1/Subject.h Provided/part1/tests/my/TestUtils.h
-        Provided/part2/List.h Provided/part2/Part2Examples.cpp Provided/part2/Utilities.h Provided/part2/CellType.h Provided/part2/Direction.h Provided/part2/BoardCell.h Provided/part2/GameBoard.h Provided/part2/MoveVehicle.h Provided/part2/RushHour.h Provided/part2/LastLocation.h Provided/part2/CountEmptyCells.h Provided/part2/MakeMove.h Provided/part2/getTypeCordinates.h)
+        Provided/part2/List.h Provided/part2/RushHourTests.cpp Provided/part2/Utilities.h Provided/part2/CellType.h Provided/part2/Direction.h Provided/part2/BoardCell.h Provided/part2/GameBoard.h Provided/part2/MoveVehicle.h Provided/part2/RushHour.h Provided/part2/LastLocation.h Provided/part2/CountEmptyCells.h Provided/part2/MakeMove.h Provided/part2/getTypeCordinates.h)
