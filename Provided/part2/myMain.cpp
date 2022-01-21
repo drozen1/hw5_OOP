@@ -140,8 +140,8 @@ int main(){
             List< BoardCell<X, UP, 1>, BoardCell<A, UP, 1>>,
     List< BoardCell<EMPTY, UP, 0>, BoardCell<EMPTY, UP, 0>>>> gameBoard2;
 
-    typedef typename OneMove<0,0,gameBoard2,RIGHT,B, 1>::newBoard toPrint;
-    Printer<toPrint>::print(std::cout);
+//    typedef typename OneMove<0,0,gameBoard2,RIGHT,B, 1>::newBoard toPrint;
+//    Printer<toPrint>::print(std::cout);
     //MoveVehicle<gameBoard2, 1, 1, DOWN, 1>::board ;
 
     Printer<gameBoard2>::print(std::cout);
@@ -162,7 +162,7 @@ int main(){
     typedef GameBoard<List< List< BoardCell<EMPTY, UP, 0>, BoardCell<EMPTY, UP, 0>>,
             List< BoardCell<X, RIGHT, 1>, BoardCell<A, UP, 1>>,
             List< BoardCell<EMPTY, UP, 0>, BoardCell<EMPTY, UP, 0>>>> gameBoard11;
-    typedef List<Move<A, DOWN, 1>> moves11;
+    typedef List<Move<A, DOWN, 1>, Move<A, UP, 1>,Move<A, UP, 1> > moves11;
     typedef CheckSolution<gameBoard11, moves11> gameState;
     static_assert(gameState::result, "Fail!");
 

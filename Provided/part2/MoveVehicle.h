@@ -49,7 +49,7 @@ struct MoveVehicle<G,R,C,RIGHT, A>{
 
     //Move the car
     constexpr static int carSize =  GetAtIndex<C, typename GetAtIndex<R,typename G::board>::value>::value::length;
-    typedef typename MakeMove<R,lastColumn, G, RIGHT, A,type,carSize>::boardResult board;
+    typedef typename MakeMove<R,lastColumn, G, RIGHT, A,type,carSize, RIGHT>::boardResult board;
 };
 
 template<typename G, int R, int C, int A>
@@ -76,7 +76,7 @@ struct MoveVehicle<G,R,C,LEFT, A>{
 
     //Move the car
     constexpr static int carSize =  GetAtIndex<C, typename GetAtIndex<R,typename G::board>::value>::value::length;
-    typedef typename MakeMove<R,lastColumn, G, LEFT, A,type,carSize>::boardResult board;
+    typedef typename MakeMove<R,lastColumn, G, LEFT, A,type,carSize, LEFT>::boardResult board;
 };
 
 template<typename G, int R, int C, int A>
@@ -107,7 +107,7 @@ struct MoveVehicle<G,R,C,UP, A>{
 
     //Move the car
     constexpr static int carSize =  GetAtIndex<C, typename GetAtIndex<R,typename G::board>::value>::value::length;
-    typedef typename MakeMove<C,lastColumn, transposeGameBoard, LEFT, A,type,carSize>::boardResult finalBoardBeforeTranspose;
+    typedef typename MakeMove<C,lastColumn, transposeGameBoard, LEFT, A,type,carSize, UP>::boardResult finalBoardBeforeTranspose;
 
     //Transpose
     typedef typename Transpose<typename finalBoardBeforeTranspose::board>::matrix finalListAfterTranspose;
@@ -142,7 +142,7 @@ struct MoveVehicle<G,R,C,DOWN, A>{
 
     //Move the car
     constexpr static int carSize =  GetAtIndex<C, typename GetAtIndex<R,typename G::board>::value>::value::length;
-    typedef typename MakeMove<C,lastColumn, transposeGameBoard, RIGHT, A,type,carSize>::boardResult finalBoardBeforeTranspose;
+    typedef typename MakeMove<C,lastColumn, transposeGameBoard, RIGHT, A,type,carSize, DOWN>::boardResult finalBoardBeforeTranspose;
 
     //Transpose
     typedef typename Transpose<typename finalBoardBeforeTranspose::board>::matrix finalListAfterTranspose;
