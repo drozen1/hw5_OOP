@@ -1,12 +1,7 @@
 #include <iostream>
 
-#include "List.h"
-#include "Utilities.h"
-#include "CellType.h"
-#include "MoveVehicle.h"
-#include "GameBoard.h"
-#include "Direction.h"
-#include "CountEmptyCells.h"
+#include "RushHour.h"
+#include "Printer.h"
 
 template<int n>
 class Int {
@@ -82,7 +77,23 @@ int main(){
             BoardCell<A, RIGHT, 1>
             >>> testBoard2;
 
-    MoveVehicle<testBoard2, 0, 0, RIGHT, 2>::board ;
+
+
+    typedef GameBoard<List< List< BoardCell<B, UP, 0>, BoardCell<A, UP, 0>>,
+            List< BoardCell<X, UP, 1>, BoardCell<A, UP, 1>>,
+    List< BoardCell<EMPTY, UP, 0>, BoardCell<EMPTY, UP, 0>>>> gameBoard2;
+
+    //MoveVehicle<gameBoard2, 1, 1, DOWN, 1>::board ;
+
+    Printer<gameBoard2>::print(std::cout);
+    typedef typename Transpose<gameBoard2::board>::matrix transposeBoard;
+    Printer<transposeBoard>::print(std::cout);
+    int ef = gameBoard2::width;
+    int eef = gameBoard2::length;
+    typedef GameBoard<transposeBoard> transposeGameBoard;
+    int e = transposeGameBoard::width;
+    int ee = transposeGameBoard::length;
+    //MoveVehicle<testBoard2, 0, 0, RIGHT, 2>::board ;
 
     int cc  = LastLocation<0, 4, LEFT, X ,X , 5, testBoard2>::value::column;
     int rr = LastLocation<0, 4, LEFT, X ,X , 5, testBoard2>::value::row;
