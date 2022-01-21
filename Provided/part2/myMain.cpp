@@ -56,9 +56,16 @@ int main(){
 
     int amount1 = Move<X, RIGHT, 1>::amount;
 
-    typedef GameBoard<List< List< BoardCell<EMPTY, UP, 0>, BoardCell<EMPTY, UP, 0>>,
-            List< BoardCell<X, RIGHT, 1>, BoardCell<A, UP, 1>>,
-            List< BoardCell<EMPTY, UP, 0>, BoardCell<EMPTY, UP, 0>>>> gameBoard;
+    typedef GameBoard<List< List< BoardCell<EMPTY, UP, 0> , BoardCell<A, UP, 4>>,
+            List< BoardCell<X, UP, 1> , BoardCell<A, UP, 4>>,
+            List< BoardCell<EMPTY, UP, 1>, BoardCell<A, UP, 4>>,
+            List< BoardCell<EMPTY, UP, 1>, BoardCell<A, UP, 4>>,
+            List< BoardCell<EMPTY, UP, 1>, BoardCell<EMPTY, UP, 2>>,
+            List< BoardCell<EMPTY, UP, 1>, BoardCell<EMPTY, UP, 2>>,
+            List< BoardCell<EMPTY, UP, 1>, BoardCell<EMPTY, UP, 2>>>> gameBoard;
+
+    typedef typename MoveVehicle<gameBoard, 2, 1, DOWN, 2>::board toPrint5;
+    Printer<toPrint5>::print(std::cout);
 
     int l = gameBoard::length;
     int w = gameBoard::width;
@@ -72,13 +79,13 @@ int main(){
             BoardCell<EMPTY, RIGHT, 1>,
             BoardCell<EMPTY, RIGHT, 1>,
             BoardCell<EMPTY, RIGHT, 1>,
-            BoardCell<X, RIGHT, 4>,
-            BoardCell<X, RIGHT, 4>,
-            BoardCell<X, RIGHT, 4>,
+            BoardCell<X, RIGHT, 3>,
+            BoardCell<X, RIGHT, 3>,
+            BoardCell<X, RIGHT, 3>,
             BoardCell<A, RIGHT, 1>
             >>> testBoard2;
 
-    typedef typename MakeMove<0,3,testBoard2,LEFT, 3, X, 3>::boardResult toPrint2;
+    typedef typename MoveVehicle<testBoard2, 0, 4, LEFT, 3>::board toPrint2;
     Printer<toPrint2>::print(std::cout);
 
     typedef GameBoard<List< List< BoardCell<B, UP, 0>, BoardCell<EMPTY, UP, 0>>,

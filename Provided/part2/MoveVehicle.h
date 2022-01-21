@@ -48,9 +48,8 @@ struct MoveVehicle<G,R,C,RIGHT, A>{
     static_assert(A <= counter, "Compilation error");
 
     //Move the car
-
-
-    typedef G board;
+    constexpr static int carSize =  GetAtIndex<C, typename GetAtIndex<R,typename G::board>::value>::value::length;
+    typedef typename MakeMove<R,lastColumn, G, RIGHT, A,type,carSize>::boardResult board;
 };
 
 template<typename G, int R, int C, int A>
@@ -75,7 +74,9 @@ struct MoveVehicle<G,R,C,LEFT, A>{
     constexpr static int counter =  CountEmptyCells<R ,lastColumn, LEFT, type ,type, G::width-1, G, 0>::value;
     static_assert(A <= counter, "Compilation error");
 
-    typedef G board;
+    //Move the car
+    constexpr static int carSize =  GetAtIndex<C, typename GetAtIndex<R,typename G::board>::value>::value::length;
+    typedef typename MakeMove<R,lastColumn, G, LEFT, A,type,carSize>::boardResult board;
 };
 
 template<typename G, int R, int C, int A>
@@ -101,10 +102,16 @@ struct MoveVehicle<G,R,C,UP, A>{
     //Check if we have another car
     //call with W-1
     constexpr static int lastColumn  = LastLocation<C, R, LEFT, type ,type , transposeGameBoard::width-1, transposeGameBoard>::value::column;
-    constexpr static int counter =  CountEmptyCells<lastColumn ,R, LEFT, type ,type, transposeGameBoard::width-1, transposeGameBoard, 0>::value;
+    constexpr static int counter =  CountEmptyCells<C, lastColumn , LEFT, type ,type, transposeGameBoard::width-1, transposeGameBoard, 0>::value;
     static_assert(A <= counter, "Compilation error");
 
-    typedef G board;
+    //Move the car
+    constexpr static int carSize =  GetAtIndex<C, typename GetAtIndex<R,typename G::board>::value>::value::length;
+    typedef typename MakeMove<C,lastColumn, transposeGameBoard, LEFT, A,type,carSize>::boardResult finalBoardBeforeTranspose;
+
+    //Transpose
+    typedef typename Transpose<typename finalBoardBeforeTranspose::board>::matrix finalListAfterTranspose;
+    typedef GameBoard<finalListAfterTranspose> board;
 };
 
 template<typename G, int R, int C, int A>
@@ -130,10 +137,16 @@ struct MoveVehicle<G,R,C,DOWN, A>{
     //Check if we have another car
     //call with W-1
     constexpr static int lastColumn  = LastLocation<C, R, RIGHT, type ,type , transposeGameBoard::width-1, transposeGameBoard>::value::column;
-    constexpr static int counter =  CountEmptyCells<lastColumn ,R, RIGHT, type ,type, transposeGameBoard::width-1, transposeGameBoard, 0>::value;
+    constexpr static int counter =  CountEmptyCells<C, lastColumn , RIGHT, type ,type, transposeGameBoard::width-1, transposeGameBoard, 0>::value;
     static_assert(A <= counter, "Compilation error");
 
-    typedef G board;
+    //Move the car
+    constexpr static int carSize =  GetAtIndex<C, typename GetAtIndex<R,typename G::board>::value>::value::length;
+    typedef typename MakeMove<C,lastColumn, transposeGameBoard, RIGHT, A,type,carSize>::boardResult finalBoardBeforeTranspose;
+
+    //Transpose
+    typedef typename Transpose<typename finalBoardBeforeTranspose::board>::matrix finalListAfterTranspose;
+    typedef GameBoard<finalListAfterTranspose> board;
 };
 
 
