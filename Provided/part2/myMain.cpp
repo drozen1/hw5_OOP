@@ -76,6 +76,33 @@ int main(){
     constexpr static int ccc  = getTypeCordinates<X,EMPTY, 0,0, 0, gameBoard3>::value::column;
     constexpr static int rrr  = getTypeCordinates<X,EMPTY, 0,0, 0, gameBoard3>::value::row;
 
+    typedef GameBoard<List<
+            List< BoardCell<EMPTY, UP, 0>> ,
+            List< BoardCell<X, UP, 0>>
+    >> gameBoard4;
+
+    typedef GameBoard<List< List< BoardCell<EMPTY, UP, 0> , BoardCell<A, UP, 4>>,
+            List< BoardCell<EMPTY, UP, 1> , BoardCell<A, UP, 4>>,
+            List< BoardCell<EMPTY, UP, 1>, BoardCell<A, UP, 4>>,
+            List< BoardCell<EMPTY, UP, 1>, BoardCell<A, UP, 4>>,
+            List< BoardCell<EMPTY, UP, 1>, BoardCell<EMPTY, UP, 2>>,
+            List< BoardCell<X, UP, 1>, BoardCell<C, UP, 2>>,
+            List< BoardCell<EMPTY, UP, 1>, BoardCell<EMPTY, UP, 2>>>> gameBoard5;
+
+
+    typedef GameBoard<List< List<
+            BoardCell<EMPTY, RIGHT, 1>,BoardCell<X, RIGHT, 1>,BoardCell<X, RIGHT, 1>,BoardCell<EMPTY, RIGHT, 1>,BoardCell<EMPTY, RIGHT, 1>,BoardCell<B, RIGHT, 1>
+    >>> gameBoard6;
+
+    constexpr static int mostleftX = CheckWin<gameBoard6>::columnMostRight;
+    constexpr static int cnt = CheckWin<gameBoard6>::counter;
+
+    constexpr static bool RES = CheckWin<gameBoard5>::result;
+
+
+// GetAtIndex<1, List<BoardCell<EMPTY, UP, 0>
+   // constexpr static CellType actualType =  GetAtIndex<0, typename GetAtIndex<0,typename gameBoard4::board>::value>::value::type;
+   // typedef typename getTypeCordinates<X, actualType, 0, 0, gameBoard4::width-1, gameBoard4>::value cordinates;
 
    // typedef typename MoveVehicle<gameBoard, 2, 1, DOWN, 2>::board toPrint5;
   //  Printer<toPrint5>::print(std::cout);
