@@ -3,6 +3,7 @@
 #include "RushHour.h"
 #include "Printer.h"
 
+
 template<int n>
 class Int {
 
@@ -57,15 +58,27 @@ int main(){
     int amount1 = Move<X, RIGHT, 1>::amount;
 
     typedef GameBoard<List< List< BoardCell<EMPTY, UP, 0> , BoardCell<A, UP, 4>>,
-            List< BoardCell<X, UP, 1> , BoardCell<A, UP, 4>>,
+            List< BoardCell<EMPTY, UP, 1> , BoardCell<A, UP, 4>>,
             List< BoardCell<EMPTY, UP, 1>, BoardCell<A, UP, 4>>,
             List< BoardCell<EMPTY, UP, 1>, BoardCell<A, UP, 4>>,
             List< BoardCell<EMPTY, UP, 1>, BoardCell<EMPTY, UP, 2>>,
-            List< BoardCell<EMPTY, UP, 1>, BoardCell<EMPTY, UP, 2>>,
+            List< BoardCell<EMPTY, UP, 1>, BoardCell<X, UP, 2>>,
             List< BoardCell<EMPTY, UP, 1>, BoardCell<EMPTY, UP, 2>>>> gameBoard;
 
-    typedef typename MoveVehicle<gameBoard, 2, 1, DOWN, 2>::board toPrint5;
-    Printer<toPrint5>::print(std::cout);
+    typedef GameBoard<List<
+            List< BoardCell<EMPTY, UP, 0>> ,
+            List< BoardCell<EMPTY, UP, 1>>,
+            List< BoardCell<EMPTY, UP, 0>> ,
+            List< BoardCell<X, UP, 0>> ,
+            List< BoardCell<EMPTY, UP, 0>>
+            >> gameBoard3;
+
+    constexpr static int ccc  = getTypeCordinates<X,EMPTY, 0,0, 0, gameBoard3>::value::column;
+    constexpr static int rrr  = getTypeCordinates<X,EMPTY, 0,0, 0, gameBoard3>::value::row;
+
+
+   // typedef typename MoveVehicle<gameBoard, 2, 1, DOWN, 2>::board toPrint5;
+  //  Printer<toPrint5>::print(std::cout);
 
     int l = gameBoard::length;
     int w = gameBoard::width;
@@ -76,17 +89,15 @@ int main(){
 
 
     typedef GameBoard<List< List<
-            BoardCell<EMPTY, RIGHT, 1>,
-            BoardCell<EMPTY, RIGHT, 1>,
-            BoardCell<EMPTY, RIGHT, 1>,
-            BoardCell<X, RIGHT, 3>,
-            BoardCell<X, RIGHT, 3>,
-            BoardCell<X, RIGHT, 3>,
-            BoardCell<A, RIGHT, 1>
+            BoardCell<X, RIGHT, 1>,
+            BoardCell<EMPTY, RIGHT, 1>
             >>> testBoard2;
 
-    typedef typename MoveVehicle<testBoard2, 0, 4, LEFT, 3>::board toPrint2;
-    Printer<toPrint2>::print(std::cout);
+
+
+
+//    typedef typename MoveVehicle<testBoard2, 0, 4, LEFT, 3>::board toPrint2;
+//    Printer<toPrint2>::print(std::cout);
 
     typedef GameBoard<List< List< BoardCell<B, UP, 0>, BoardCell<EMPTY, UP, 0>>,
             List< BoardCell<X, UP, 1>, BoardCell<A, UP, 1>>,
@@ -106,10 +117,10 @@ int main(){
     int ee = transposeGameBoard::length;
     //MoveVehicle<testBoard2, 0, 0, RIGHT, 2>::board ;
 
-    int cc  = LastLocation<0, 4, LEFT, X ,X , 5, testBoard2>::value::column;
-    int rr = LastLocation<0, 4, LEFT, X ,X , 5, testBoard2>::value::row;
-
-    int counter =  CountEmptyCells<0,3, LEFT, X ,X, 7, testBoard2, 0>::value;
+//    int cc  = LastLocation<0, 4, LEFT, X ,X , 5, testBoard2>::value::column;
+//    int rr = LastLocation<0, 4, LEFT, X ,X , 5, testBoard2>::value::row;
+//
+//    int counter =  CountEmptyCells<0,3, LEFT, X ,X, 7, testBoard2, 0>::value;
 
     return 0;
 }

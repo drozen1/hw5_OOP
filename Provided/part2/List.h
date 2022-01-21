@@ -71,6 +71,4 @@ struct SetAtIndex<0, X, List<T, TT... > > {
 
 
 
-
-
 #endif //HW5_OOP_LIST_H

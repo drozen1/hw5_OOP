@@ -4,6 +4,7 @@
 
 #ifndef HW5_OOP_RUSHHOUR_H
 #define HW5_OOP_RUSHHOUR_H
+
 #include "BoardCell.h"
 #include "CellType.h"
 #include "CountEmptyCells.h"
@@ -13,6 +14,9 @@
 #include "List.h"
 #include "MoveVehicle.h"
 #include "Utilities.h"
+#include "getTypeCordinates.h"
+
+struct CheckWin{};
 
 
 #endif //HW5_OOP_RUSHHOUR_H
