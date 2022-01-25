@@ -4,6 +4,10 @@
 
 #ifndef HW5_OOP_MAKEMOVE_H
 #define HW5_OOP_MAKEMOVE_H
+
+#include "Direction.h"
+#include "CellType.h"
+
 template<int R, int C, typename G, Direction D, CellType Type, int CarSize,Direction directionToSet>
 struct OneMove;
 
